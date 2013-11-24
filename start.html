@@ -1,0 +1,200 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+
+    <title>2. Getting Started &mdash; root_numpy 3.1.1.dev documentation</title>
+
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
+
+
+    
+    <link rel="stylesheet" href="_static/rtd.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '3.1.1.dev',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/searchtools.js"></script>
+    <link rel="top" title="root_numpy 3.1.1.dev documentation" href="index.html" />
+    <link rel="next" title="3. root_numpy Reference" href="reference/index.html" />
+    <link rel="prev" title="1. Installation" href="install.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="reference/index.html" title="3. root_numpy Reference"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="install.html" title="1. Installation"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">root_numpy 3.1.1.dev documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="getting-started">
+<h1>2. Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="try-root-numpy-on-cern-s-lxplus">
+<h2>2.1. Try <cite>root_numpy</cite> on <a class="reference external" href="http://information-technology.web.cern.ch/services/lxplus-service">CERN&#8217;s LXPLUS</a><a class="headerlink" href="#try-root-numpy-on-cern-s-lxplus" title="Permalink to this headline">¶</a></h2>
+<p>First, <a class="reference external" href="http://root.cern.ch/drupal/content/starting-root">set up ROOT</a>:</p>
+<div class="highlight-python"><pre>source /afs/cern.ch/sw/lcg/contrib/gcc/4.3/x86_64-slc5/setup.sh &amp;&amp;\
+cd /afs/cern.ch/sw/lcg/app/releases/ROOT/5.34.00/x86_64-slc5-gcc43-opt/root &amp;&amp;\
+source bin/thisroot.sh &amp;&amp;\
+cd -</pre>
+</div>
+<p>Then, create and activate a <a class="reference external" href="https://pypi.python.org/pypi/virtualenv">virtualenv</a> (change <cite>my_env</cite> at your will):</p>
+<div class="highlight-python"><pre>virtualenv my_env # necessary only the first time
+source my_env/bin/activate</pre>
+</div>
+<p>Install NumPy:</p>
+<div class="highlight-python"><pre>pip install numpy</pre>
+</div>
+<p>Get the <a class="reference external" href="https://github.com/rootpy/root_numpy#getting-the-latest-source">latest source</a>:</p>
+<div class="highlight-python"><pre>git clone https://github.com/rootpy/root_numpy.git</pre>
+</div>
+<p>and <a class="reference external" href="https://github.com/rootpy/root_numpy#manual-installation">install</a> it:</p>
+<div class="highlight-python"><pre>~/my_env/bin/python root_numpy/setup.py install</pre>
+</div>
+<p>Note that neither <cite>sudo</cite> nor <cite>&#8211;user</cite> is used, because we are in a virtualenv.</p>
+<p><cite>root_numpy</cite> should now be ready to <a class="reference external" href="http://rootpy.github.com/root_numpy/">use</a>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">root_numpy</span> <span class="kn">import</span> <span class="n">root2rec</span><span class="p">,</span> <span class="n">testdata</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">root2rec</span><span class="p">(</span><span class="n">testdata</span><span class="o">.</span><span class="n">get_filepath</span><span class="p">())[:</span><span class="mi">20</span><span class="p">]</span> 
+<span class="go">rec.array([(1, 1.0, 1.0), (2, 3.0, 4.0), (3, 5.0, 7.0), (4, 7.0, 10.0),</span>
+<span class="go">       (5, 9.0, 13.0), (6, 11.0, 16.0), (7, 13.0, 19.0), (8, 15.0, 22.0),</span>
+<span class="go">       (9, 17.0, 25.0), (10, 19.0, 28.0), (11, 21.0, 31.0),</span>
+<span class="go">       (12, 23.0, 34.0), (13, 25.0, 37.0), (14, 27.0, 40.0),</span>
+<span class="go">       (15, 29.0, 43.0), (16, 31.0, 46.0), (17, 33.0, 49.0),</span>
+<span class="go">       (18, 35.0, 52.0), (19, 37.0, 55.0), (20, 39.0, 58.0)],</span>
+<span class="go">      dtype=[(&#39;n_int&#39;, &#39;&lt;i4&#39;), (&#39;f_float&#39;, &#39;&lt;f4&#39;), (&#39;d_double&#39;, &#39;&lt;f8&#39;)])</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="have-questions-or-found-a-bug">
+<h2>2.2. Have Questions or Found a Bug?<a class="headerlink" href="#have-questions-or-found-a-bug" title="Permalink to this headline">¶</a></h2>
+<p>Think you found a bug? Open a new issue here:
+<a class="reference external" href="https://github.com/rootpy/root_numpy/issues">github.com/rootpy/root_numpy/issues</a>.</p>
+<p>Also feel free to post questions or follow discussion on the
+<a class="reference external" href="http://groups.google.com/group/rootpy-users">rootpy-users</a> or
+<a class="reference external" href="http://groups.google.com/group/rootpy-dev">rootpy-dev</a> Google groups.</p>
+</div>
+<div class="section" id="contributing">
+<h2>2.3. Contributing<a class="headerlink" href="#contributing" title="Permalink to this headline">¶</a></h2>
+<p>Please post on the <a class="reference external" href="mailto:rootpy-dev&#37;&#52;&#48;googlegroups&#46;com">rootpy-dev<span>&#64;</span>googlegroups<span>&#46;</span>com</a> list if you have ideas
+or contributions. Feel free to fork
+<a class="reference external" href="https://github.com/rootpy/root_numpy">root_numpy on GitHub</a>
+and later submit a pull request.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">2. Getting Started</a><ul>
+<li><a class="reference internal" href="#try-root-numpy-on-cern-s-lxplus">2.1. Try <cite>root_numpy</cite> on CERN&#8217;s LXPLUS</a></li>
+<li><a class="reference internal" href="#have-questions-or-found-a-bug">2.2. Have Questions or Found a Bug?</a></li>
+<li><a class="reference internal" href="#contributing">2.3. Contributing</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="install.html"
+                        title="previous chapter">1. Installation</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="reference/index.html"
+                        title="next chapter">3. root_numpy Reference</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/start.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="reference/index.html" title="3. root_numpy Reference"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="install.html" title="1. Installation"
+             >previous</a> |</li>
+        <li><a href="index.html">root_numpy 3.1.1.dev documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+<div class="footer">
+    &copy; Copyright 2013, rootpy developers and contributors.
+</div>
+
+
+
+<!-- Google Analytics Code -->
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-39364267-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+  </body>
+</html>

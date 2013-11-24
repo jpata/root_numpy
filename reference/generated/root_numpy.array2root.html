@@ -1,0 +1,184 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+
+    <title>3.8. root_numpy.array2root &mdash; root_numpy 3.1.1.dev documentation</title>
+
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
+
+
+    
+    <link rel="stylesheet" href="../../_static/rtd.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '3.1.1.dev',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../_static/searchtools.js"></script>
+    <link rel="top" title="root_numpy 3.1.1.dev documentation" href="../../index.html" />
+    <link rel="up" title="3. root_numpy Reference" href="../index.html" />
+    <link rel="next" title="3.9. root_numpy.fill_hist" href="root_numpy.fill_hist.html" />
+    <link rel="prev" title="3.7. root_numpy.array2tree" href="root_numpy.array2tree.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="root_numpy.fill_hist.html" title="3.9. root_numpy.fill_hist"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="root_numpy.array2tree.html" title="3.7. root_numpy.array2tree"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">root_numpy 3.1.1.dev documentation</a> &raquo;</li>
+          <li><a href="../index.html" accesskey="U">3. root_numpy Reference</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="root-numpy-array2root">
+<h1>3.8. root_numpy.array2root<a class="headerlink" href="#root-numpy-array2root" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="root_numpy.array2root">
+<tt class="descname">array2root</tt><big>(</big><em>arr</em>, <em>filename</em>, <em>treename='tree'</em>, <em>mode='update'</em><big>)</big><a class="headerlink" href="#root_numpy.array2root" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a numpy structured array into a ROOT TTree and save directly in a
+ROOT TFile.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">This function is experimental. Please report problems.
+Not all data types are supported (<tt class="docutils literal"><span class="pre">np.object</span></tt> and <tt class="docutils literal"><span class="pre">np.float16</span></tt>).</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>arr</strong> : array</p>
+<blockquote>
+<div><p>A numpy structured array</p>
+</div></blockquote>
+<p><strong>filename</strong> : str</p>
+<blockquote>
+<div><p>Name of the output ROOT TFile. A new file will be created if it
+doesn&#8217;t already exist.</p>
+</div></blockquote>
+<p><strong>treename</strong> : str (optional, default=&#8217;tree&#8217;)</p>
+<blockquote>
+<div><p>Name of the created ROOT TTree.</p>
+</div></blockquote>
+<p><strong>mode</strong> : str (optional, default=&#8217;update&#8217;)</p>
+<blockquote class="last">
+<div><p>Mode used to open the ROOT TFile (&#8216;update&#8217; or &#8216;recreate&#8217;).</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition-see-also admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="root_numpy.array2tree.html#root_numpy.array2tree" title="root_numpy.array2tree"><tt class="xref py py-obj docutils literal"><span class="pre">array2tree</span></tt></a></p>
+</div>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="root_numpy.array2tree.html"
+                        title="previous chapter">3.7. root_numpy.array2tree</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="root_numpy.fill_hist.html"
+                        title="next chapter">3.9. root_numpy.fill_hist</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../_sources/reference/generated/root_numpy.array2root.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="root_numpy.fill_hist.html" title="3.9. root_numpy.fill_hist"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="root_numpy.array2tree.html" title="3.7. root_numpy.array2tree"
+             >previous</a> |</li>
+        <li><a href="../../index.html">root_numpy 3.1.1.dev documentation</a> &raquo;</li>
+          <li><a href="../index.html" >3. root_numpy Reference</a> &raquo;</li> 
+      </ul>
+    </div>
+<div class="footer">
+    &copy; Copyright 2013, rootpy developers and contributors.
+</div>
+
+
+
+<!-- Google Analytics Code -->
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-39364267-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+  </body>
+</html>

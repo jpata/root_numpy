@@ -1,0 +1,232 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+
+    <title>3.3. root_numpy.root2array &mdash; root_numpy 3.1.1.dev documentation</title>
+
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
+
+
+    
+    <link rel="stylesheet" href="../../_static/rtd.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '3.1.1.dev',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../_static/searchtools.js"></script>
+    <link rel="top" title="root_numpy 3.1.1.dev documentation" href="../../index.html" />
+    <link rel="up" title="3. root_numpy Reference" href="../index.html" />
+    <link rel="next" title="3.4. root_numpy.root2rec" href="root_numpy.root2rec.html" />
+    <link rel="prev" title="3.2. root_numpy.matrix" href="root_numpy.matrix.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="root_numpy.root2rec.html" title="3.4. root_numpy.root2rec"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="root_numpy.matrix.html" title="3.2. root_numpy.matrix"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">root_numpy 3.1.1.dev documentation</a> &raquo;</li>
+          <li><a href="../index.html" accesskey="U">3. root_numpy Reference</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="root-numpy-root2array">
+<h1>3.3. root_numpy.root2array<a class="headerlink" href="#root-numpy-root2array" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="root_numpy.root2array">
+<tt class="descname">root2array</tt><big>(</big><em>filenames</em>, <em>treename=None</em>, <em>branches=None</em>, <em>selection=None</em>, <em>start=None</em>, <em>stop=None</em>, <em>step=None</em>, <em>include_weight=False</em>, <em>weight_name='weight'</em><big>)</big><a class="headerlink" href="#root_numpy.root2array" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert trees in ROOT files into a numpy structured array.
+Refer to the type conversion table <a class="reference internal" href="../index.html#conversion-table"><em>here</em></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>filenames</strong> : str or list</p>
+<blockquote>
+<div><p>ROOT file name pattern or list of patterns. Wildcarding is
+supported by Python globbing.</p>
+</div></blockquote>
+<p><strong>treename</strong> : str, optional (default=None)</p>
+<blockquote>
+<div><p>Name of the tree to convert (optional if each file contains exactly one
+tree).</p>
+</div></blockquote>
+<p><strong>branches</strong> : list of str, optional (default=None)</p>
+<blockquote>
+<div><p>List of branch names to include as columns of the array.
+If None or empty then include all branches than can be converted in the
+first tree.
+If branches contains duplicate branches, only the first one is used.</p>
+</div></blockquote>
+<p><strong>selection</strong> : str, optional (default=None)</p>
+<blockquote>
+<div><p>Only include entries fulfilling this condition.</p>
+</div></blockquote>
+<p><strong>start, stop, step: int, optional (default=None)</strong> :</p>
+<blockquote>
+<div><p>The meaning of the <tt class="docutils literal"><span class="pre">start</span></tt>, <tt class="docutils literal"><span class="pre">stop</span></tt> and <tt class="docutils literal"><span class="pre">step</span></tt>
+parameters is the same as for Python slices.
+If a range is supplied (by setting some of the
+<tt class="docutils literal"><span class="pre">start</span></tt>, <tt class="docutils literal"><span class="pre">stop</span></tt> or <tt class="docutils literal"><span class="pre">step</span></tt> parameters), only the entries in that
+range and fulfilling the <tt class="docutils literal"><span class="pre">selection</span></tt> condition (if defined) are used.</p>
+</div></blockquote>
+<p><strong>include_weight</strong> : bool, optional (default=False)</p>
+<blockquote>
+<div><p>Include a column containing the tree weight.</p>
+</div></blockquote>
+<p><strong>weight_name</strong> : str, optional (default=&#8217;weight&#8217;)</p>
+<blockquote class="last">
+<div><p>The field name for the weight column if <tt class="docutils literal"><span class="pre">include_weight=True</span></tt>.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>Due to the way TChain works, if the trees specified in the input files have
+different structures, only the branch in the first tree will be
+automatically extracted. You can work around this by either reordering the
+input file or specifying the branches manually.</p>
+<p class="rubric">Examples</p>
+<p>Read all branches from the tree named <tt class="docutils literal"><span class="pre">mytree</span></tt> in <tt class="docutils literal"><span class="pre">a.root</span></tt>
+Remember that <tt class="docutils literal"><span class="pre">mytree</span></tt> is optional if <tt class="docutils literal"><span class="pre">a.root</span></tt> has one tree:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">root2array</span><span class="p">(</span><span class="s">&#39;a.root&#39;</span><span class="p">,</span> <span class="s">&#39;mytree&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Read all branches starting from entry 5 and include 10 entries or up to the
+end of the file:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">root2array</span><span class="p">(</span><span class="s">&#39;a.root&#39;</span><span class="p">,</span> <span class="s">&#39;mytree&#39;</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Read all branches in reverse order:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">root2array</span><span class="p">(</span><span class="s">&#39;a.root&#39;</span><span class="p">,</span> <span class="s">&#39;mytree&#39;</span><span class="p">,</span> <span class="n">step</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Read every second entry:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">root2array</span><span class="p">(</span><span class="s">&#39;a.root&#39;</span><span class="p">,</span> <span class="s">&#39;mytree&#39;</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Read all branches from the tree named <tt class="docutils literal"><span class="pre">mytree</span></tt> in <tt class="docutils literal"><span class="pre">a*.root</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">root2array</span><span class="p">(</span><span class="s">&#39;a*.root&#39;</span><span class="p">,</span> <span class="s">&#39;mytree&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Read all branches from the tree named <tt class="docutils literal"><span class="pre">mytree</span></tt> in <tt class="docutils literal"><span class="pre">a*.root</span></tt> and
+<tt class="docutils literal"><span class="pre">b*.root</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">root2array</span><span class="p">([</span><span class="s">&#39;a*.root&#39;</span><span class="p">,</span> <span class="s">&#39;b*.root&#39;</span><span class="p">],</span> <span class="s">&#39;mytree&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Read branch <tt class="docutils literal"><span class="pre">x</span></tt> and <tt class="docutils literal"><span class="pre">y</span></tt> from the tree named <tt class="docutils literal"><span class="pre">mytree</span></tt> in <tt class="docutils literal"><span class="pre">a.root</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">root2array</span><span class="p">(</span><span class="s">&#39;a.root&#39;</span><span class="p">,</span> <span class="s">&#39;mytree&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s">&#39;x&#39;</span><span class="p">,</span> <span class="s">&#39;y&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="root_numpy.matrix.html"
+                        title="previous chapter">3.2. root_numpy.matrix</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="root_numpy.root2rec.html"
+                        title="next chapter">3.4. root_numpy.root2rec</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../_sources/reference/generated/root_numpy.root2array.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="root_numpy.root2rec.html" title="3.4. root_numpy.root2rec"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="root_numpy.matrix.html" title="3.2. root_numpy.matrix"
+             >previous</a> |</li>
+        <li><a href="../../index.html">root_numpy 3.1.1.dev documentation</a> &raquo;</li>
+          <li><a href="../index.html" >3. root_numpy Reference</a> &raquo;</li> 
+      </ul>
+    </div>
+<div class="footer">
+    &copy; Copyright 2013, rootpy developers and contributors.
+</div>
+
+
+
+<!-- Google Analytics Code -->
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-39364267-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+  </body>
+</html>

@@ -1,0 +1,194 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+
+    <title>3.15. root_numpy.blockwise_inner_join &mdash; root_numpy 3.1.1.dev documentation</title>
+
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
+
+
+    
+    <link rel="stylesheet" href="../../_static/rtd.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '3.1.1.dev',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../_static/searchtools.js"></script>
+    <link rel="top" title="root_numpy 3.1.1.dev documentation" href="../../index.html" />
+    <link rel="up" title="3. root_numpy Reference" href="../index.html" />
+    <link rel="prev" title="3.14. root_numpy.stretch" href="root_numpy.stretch.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="root_numpy.stretch.html" title="3.14. root_numpy.stretch"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">root_numpy 3.1.1.dev documentation</a> &raquo;</li>
+          <li><a href="../index.html" accesskey="U">3. root_numpy Reference</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="root-numpy-blockwise-inner-join">
+<h1>3.15. root_numpy.blockwise_inner_join<a class="headerlink" href="#root-numpy-blockwise-inner-join" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="root_numpy.blockwise_inner_join">
+<tt class="descname">blockwise_inner_join</tt><big>(</big><big>)</big><a class="headerlink" href="#root_numpy.blockwise_inner_join" title="Permalink to this definition">¶</a></dt>
+<dd><p>perform a blockwise inner join from names specified in left to right via 
+foreign_key left-&gt;foreign_key-&gt;right.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>data</strong> : array</p>
+<blockquote>
+<div><p>full data set</p>
+</div></blockquote>
+<p><strong>left</strong> : array</p>
+<blockquote>
+<div><p>array of left side column names</p>
+</div></blockquote>
+<p><strong>foreign_key</strong> : array or string</p>
+<blockquote>
+<div><p>numpy array or string foreign_key column name
+This column can be either integer or array of int.
+if foreign_key is array of int column, left column will 
+be treated according to left column type:</p>
+<ul class="simple">
+<li>Scalar columns or columns in force_repeat will be repeated</li>
+<li>Array columns not in force_repeat will be assumed to the
+same length as foreign_key and will be strecthed by index</li>
+</ul>
+</div></blockquote>
+<p><strong>right</strong> : array</p>
+<blockquote>
+<div><p>array of right side column names
+These are array columns that each index foreign_key points to.
+These columns are assumed to have the same length.</p>
+</div></blockquote>
+<p><strong>force_repeat</strong> : array</p>
+<blockquote class="last">
+<div><p>array of left column names that 
+will be force to stretch even if it&#8217;s an array(useful when
+you want to emulate multiple join)</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">test_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+<span class="go">(1.0, np.array([11,12,13]), np.array([1,0,1]), 0, np.array([1,2,3])),</span>
+<span class="go">(2.0, np.array([21,22,23]), np.array([-1,2,-1]), 1, np.array([31,32,33]))],</span>
+<span class="go">dtype=[(&#39;sl&#39;, np.float), (&#39;al&#39;, &#39;O&#39;), (&#39;fk&#39;, &#39;O&#39;), (&#39;s_fk&#39;, np.int), (&#39;ar&#39;, &#39;O&#39;)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">blockwise_inner_join</span><span class="p">(</span><span class="n">test_data</span><span class="p">,</span> <span class="p">[</span><span class="s">&#39;sl&#39;</span><span class="p">,</span> <span class="s">&#39;al&#39;</span><span class="p">],</span> <span class="n">test_data</span><span class="p">[</span><span class="s">&#39;fk&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s">&#39;ar&#39;</span><span class="p">]</span> <span class="p">)</span>
+<span class="go">array([(1.0, 11, 2, 1), (1.0, 12, 1, 0), (1.0, 13, 2, 1), (2.0, 22, 33, 2)], </span>
+<span class="go">dtype=[(&#39;sl&#39;, &#39;&lt;f8&#39;), (&#39;al&#39;, &#39;&lt;i8&#39;), (&#39;ar&#39;, &#39;&lt;i8&#39;), (&#39;fk&#39;, &#39;&lt;i8&#39;)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">blockwise_inner_join</span><span class="p">(</span><span class="n">test_data</span><span class="p">,</span> <span class="p">[</span><span class="s">&#39;sl&#39;</span><span class="p">,</span><span class="s">&#39;al&#39;</span><span class="p">],</span> <span class="n">test_data</span><span class="p">[</span><span class="s">&#39;fk&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s">&#39;ar&#39;</span><span class="p">],</span> <span class="n">force_repeat</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;al&#39;</span><span class="p">])</span>
+<span class="go">array([(1.0, [11, 12, 13], 2, 1), (1.0, [11, 12, 13], 1, 0),</span>
+<span class="go">(1.0, [11, 12, 13], 2, 1), (2.0, [21, 22, 23], 33, 2)], </span>
+<span class="go">dtype=[(&#39;sl&#39;, &#39;&lt;f8&#39;), (&#39;al&#39;, &#39;|O8&#39;), (&#39;ar&#39;, &#39;&lt;i8&#39;), (&#39;fk&#39;, &#39;&lt;i8&#39;)])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="root_numpy.stretch.html"
+                        title="previous chapter">3.14. root_numpy.stretch</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../_sources/reference/generated/root_numpy.blockwise_inner_join.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="root_numpy.stretch.html" title="3.14. root_numpy.stretch"
+             >previous</a> |</li>
+        <li><a href="../../index.html">root_numpy 3.1.1.dev documentation</a> &raquo;</li>
+          <li><a href="../index.html" >3. root_numpy Reference</a> &raquo;</li> 
+      </ul>
+    </div>
+<div class="footer">
+    &copy; Copyright 2013, rootpy developers and contributors.
+</div>
+
+
+
+<!-- Google Analytics Code -->
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-39364267-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+  </body>
+</html>
