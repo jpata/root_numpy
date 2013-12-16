@@ -93,9 +93,11 @@ class BranchColumn: public Column
         {
             // Check whether it's array if so of which type
             TLeaf* len_leaf = leaf->GetLeafCounter(countval);
+            std::cout << leaf->GetName() << " "
+                << leaf->GetLen() << " " << countval << " " << len_leaf << std::endl;
             if (countval == 1)
             {
-                if (len_leaf == 0)
+                if (len_leaf == 0 && leaf->GetLen()==1)
                 { // single element
                     coltype = SINGLE;
                 }
@@ -103,6 +105,7 @@ class BranchColumn: public Column
                 { // variable length
                     coltype = VARY;
                 }
+                std::cout << "coltype=" << coltype << std::endl;
             }
             else if (countval > 0)
             {
